@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+        <script src="index.js"></script>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body ng-app="pizzaChallenge" ng-controller="indexController as indexCtrl">
+        <div id="wrapper">
+            <img id="banner" src="./img/banner.png"/>
+            <div class="wrapper">
+                <h2>Please, take a peak at our delish menu:</h2>
+                <div id="menu">
+                    <h1><i>Menu:</i></h1>
+                    <table ng-repeat="pizza in indexCtrl.pizzaMenu">
+                        <tr ng-if="!($index % 4)">
+                            <td ng-if="indexCtrl.pizzaMenu[$index]">
+                                <h3><u>{{indexCtrl.pizzaMenu[$index]["name"]}}</u></h3>
+                                <p>Ingredients:</p>
+                                <ul>
+                                    <li ng-repeat="ing in indexCtrl.pizzaMenu[$index]['ingredients']">
+                                        {{ing}}
+                                    </li>
+                                </ul>
+                                <p>Price: <b>{{indexCtrl.pizzaMenu[$index]["price"]}}</b></p>
+                            </td>
+                            <td ng-if="indexCtrl.pizzaMenu[$index + 1]">
+                                <h3><u>{{indexCtrl.pizzaMenu[$index + 1]["name"]}}</u></h3>
+                                <p>Ingredients:</p>
+                                <ul>
+                                    <li ng-repeat="ing in indexCtrl.pizzaMenu[$index + 1]['ingredients']">
+                                        {{ing}}
+                                    </li>
+                                </ul>
+                                <p>Price: <b>{{indexCtrl.pizzaMenu[$index + 1]["price"]}}</b></p>
+                            </td>
+                            <td ng-if="indexCtrl.pizzaMenu[$index + 2]">
+                                <h3><u>{{indexCtrl.pizzaMenu[$index + 2]["name"]}}</u></h3>
+                                <p>Ingredients:</p>
+                                <ul>
+                                    <li ng-repeat="ing in indexCtrl.pizzaMenu[$index + 2]['ingredients']">
+                                        {{ing}}
+                                    </li>
+                                </ul>
+                                <p>Price: <b>{{indexCtrl.pizzaMenu[$index + 2]["price"]}}</b></p>
+                            </td>
+                            <td ng-if="indexCtrl.pizzaMenu[$index + 3]">
+                                <h3><u>{{indexCtrl.pizzaMenu[$index + 3]["name"]}}</u></h3>
+                                <p>Ingredients:</p>
+                                <ul>
+                                    <li ng-repeat="ing in indexCtrl.pizzaMenu[$index + 3]['ingredients']">
+                                        {{ing}}
+                                    </li>
+                                </ul>
+                                <p>Price: <b>{{indexCtrl.pizzaMenu[$index + 3]["price"]}}</b></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div><br>
+
+                <button ng-click="indexCtrl.groupPizzas();"><h3>Pizza Challenge! Click here</h3></button><br><br>
+
+                <div ng-show="indexCtrl.groups">
+                    <table id="group">
+                        <thead>
+                            <th ng-repeat="group in indexCtrl.groups">{{group["name"]}}</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td ng-repeat="group in indexCtrl.groups">
+                                    <ul>
+                                        <li ng-repeat="pizza in group['pizzas']">{{pizza["name"]}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td ng-repeat="answer in indexCtrl.result.answer">
+                                    <p>{{answer['group_' + ($index + 1)]['percentage']}}% of all Pizzas</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td ng-repeat="answer in indexCtrl.result.answer">
+                                    <p>Cheapest:<br>{{answer['group_' + ($index + 1)]['cheapest']['name']}},
+                                        <br>price: {{answer['group_' + ($index + 1)]['cheapest']['price']}}
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table><br>
+
+                    <button ng-click="indexCtrl.sendResult();"><h3>Send Results to RenderedText</h3></button><br><br>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

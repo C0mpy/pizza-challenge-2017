@@ -1,0 +1,71 @@
+html {
+    background-image: url("./img/background.jpg");
+    height: 100%;
+    background-repeat: repeat;
+}
+
+body {
+	margin-top: 30px;
+    margin-left: 150px;
+    margin-right: 150px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#banner {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+
+#wrapper {
+    background-color:rgba(255, 255, 255, .8)
+}
+
+.wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#menu {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    background-color: #f4b744;
+    padding: 15px;
+}
+
+#menu table {
+    width: 100%;
+}
+
+#menu table tr td {
+    vertical-align: top;
+    width: 25%;
+}
+
+body button {
+    width: 100%;
+}
+
+#group tbody tr td {
+    vertical-align: top;
+    width: 25%;
+}
+
+#group thead th {
+    background-color: darkred;
+}
+
+
+#group thead th + th {
+    background-color: goldenrod;
+}
+
+
+#group thead th + th + th {
+    background-color: green;
+}
+
+#group thead th + th + th + th{
+    background-color: lightgray;
+}
